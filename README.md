@@ -2,7 +2,7 @@
 
 A Mars-base survival game for curious kids (ages 7–12). Keep a 4-person crew alive in Jezero Crater from sunrise to sunrise by deciding where your solar power goes: heaters, air, grow lights, lab and radio.
 
-**Play it:** https://kqetlyn.github.io/spaceappschallenge.org/
+**Play it:** https://kqetlyn.github.io/redplanetoutpost/
 
 ## The five sols
 | Sol | What happens | The trade-off |
