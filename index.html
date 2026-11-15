@@ -1,7 +1,13 @@
 <!DOCTYPE html>
+<!-- AI disclosure: Built with AI assistance: the code (HTML, CSS, JavaScript), the in-game text and the code-drawn graphics were generated with Claude, an AI assistant made by Anthropic. Our team came up with the idea, chose the features, levels and trade-offs, played and tested every version, and directed each change. Numbers come from the NASA sources listed in the game. No NASA logos or branding are used. -->
 <html lang="en">
 <head>
 <meta charset="utf-8">
+<meta name="description" content="Red Planet Outpost: a Mars base survival game for ages 7–12, built on NASA data. Keep 4 crew alive from sunrise to sunrise.">
+<meta name="author" content="Kqetlyn">
+<meta name="generator" content="Claude (Anthropic AI assistant), directed and tested by the team">
+<meta name="ai-generated" content="true">
+<meta name="ai-disclosure" content="Built with AI assistance: the code (HTML, CSS, JavaScript), the in-game text and the code-drawn graphics were generated with Claude, an AI assistant made by Anthropic. Our team came up with the idea, chose the features, levels and trade-offs, played and tested every version, and directed each change. Numbers come from the NASA sources listed in the game. No NASA logos or branding are used.">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Red Planet Outpost</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -336,6 +342,8 @@ table.cmp .bad{color:var(--alarm);font-weight:700}
   .choice,.diff{grid-template-columns:1fr}.levels{grid-template-columns:repeat(3,1fr)}.sumgrid{grid-template-columns:repeat(2,1fr)}
   .modal.title{background:#0c0a1de6}
 }
+#aiMark{position:absolute;right:12px;bottom:70px;z-index:2;pointer-events:none;font-size:.72rem;font-family:var(--display);letter-spacing:.04em;color:#f7efe4cc;background:#0c0a1d99;border:1px solid #f7efe433;border-radius:999px;padding:3px 10px}
+.aiNote{font-size:.82rem;color:var(--muted);border-top:1px solid var(--line);padding-top:8px;margin-top:10px;max-width:60ch}
 .on-title .bar,.on-title .clock,.on-title .speed,.on-title #goalsBtn,.on-title #tags,.on-title .hud,.on-title .dock,.on-title #sciBig{display:none!important}
 @media (max-width:640px){
   html,body{overflow:auto} #app{height:auto;min-height:100%}
@@ -351,6 +359,7 @@ table.cmp .bad{color:var(--alarm);font-weight:700}
   #toasts{top:8px;right:10px;width:calc(100% - 20px)} #toasts .toast:nth-child(n+2){display:none} .toast{font-size:.85rem;padding:8px 10px}
   .chip{min-height:40px;padding:4px 10px}
   #coach{position:fixed;left:10px;right:10px;top:auto;bottom:10px;max-width:none}
+  #aiMark{bottom:6px;right:8px;font-size:.62rem}
   .bubble{max-width:200px;font-size:.88rem}
   .concept{grid-template-columns:1fr;}.concept i{transform:rotate(90deg);text-align:center}
   #sciBig{position:relative;top:auto;left:auto;transform:none;min-width:0;width:100%;border-radius:0;border-width:2px 0;padding:8px 12px;box-shadow:none}
@@ -399,6 +408,7 @@ table.cmp .bad{color:var(--alarm);font-weight:700}
     <div id="bubbles"></div>
     <div id="coach" class="hidden" role="status" aria-live="polite"></div>
     <div id="toasts" aria-live="polite"></div>
+    <div id="aiMark">🤖 AI-generated with Claude · graphics drawn by code</div>
     <div class="dock" id="dock" aria-label="Base systems"></div>
   </main>
 </div>
@@ -678,6 +688,7 @@ const FIRST = {
   dish:`My signal takes ${DELAY} minutes to reach Earth today.`,
   shelter:"Water in the walls blocks solar-storm particles."
 };
+const AI_NOTE = "Built with AI assistance: the code (HTML, CSS, JavaScript), the in-game text and the code-drawn graphics were generated with Claude, an AI assistant made by Anthropic. Our team came up with the idea, chose the features, levels and trade-offs, played and tested every version, and directed each change. Numbers come from the NASA sources listed in the game. No NASA logos or branding are used.";
 const SOURCES = [
   ["Sol length 24 h 39 min; a Mars clock hour is about 62 Earth minutes","real","NASA Mars facts"],
   ["Temperature through the sol (about −22 °C afternoon high, −83 °C night low)","approx","Shaped to Perseverance MEDA readings at Jezero (April 2021). Average −55 °C, day–night swing of 50–60 °C (Rodriguez-Manfredi et al., 2023)."],
@@ -1256,7 +1267,8 @@ function showTitle(){
     </div>
     <div class="levels">${lv}</div>
     <div class="row"><button class="btn" data-level="${next}" data-focus>Start Sol ${next} ▶</button><button class="btn ghost" data-act="help">How to play</button><button class="btn ghost" data-act="sources">Where the numbers come from</button></div>
-    <p style="font-size:.88rem;color:var(--muted)">📡 Today Mars is ${LT.au.toFixed(2)} AU away, so a radio message takes ${DELAY} minutes to reach Earth. ${G.unlockAll ? `<button class="linkbtn" data-act="lock">Teachers: lock the levels again</button>` : `<button class="linkbtn" data-act="unlock">Teachers: open all levels</button>`}</p>`, { title:true });
+    <p style="font-size:.88rem;color:var(--muted)">📡 Today Mars is ${LT.au.toFixed(2)} AU away, so a radio message takes ${DELAY} minutes to reach Earth. ${G.unlockAll ? `<button class="linkbtn" data-act="lock">Teachers: lock the levels again</button>` : `<button class="linkbtn" data-act="unlock">Teachers: open all levels</button>`}</p>
+    <p class="aiNote">🤖 <b>AI acknowledgment:</b> ${AI_NOTE}</p>`, { title:true });
   $("#solLbl").textContent = "Red Planet"; $("#lvlLbl").textContent = "Outpost"; $("#hud").innerHTML = ""; $("#dock").innerHTML = ""; $("#dock").dataset.sig = "";
 }
 function goalsHtml(L, S){
@@ -1289,6 +1301,7 @@ function showSources(){
     <p>Nothing here is live data. Real measurements set the <i>shape</i> of each sol, and the game fills in the hour-by-hour curve. Each row says how close it is to the real thing.</p>
     <p><span class="tg real">REAL</span> measured or published by NASA · <span class="tg approx">SHAPED BY DATA</span> simplified from real data · <span class="tg rule">GAME SCALE</span> picked to make it playable · <span class="tg calc">CALCULATED</span> worked out today</p>
     <div style="overflow-x:auto"><table class="src"><tr><th>In the game</th><th>Type</th><th>Source</th></tr>${SOURCES.map(r => `<tr><td>${r[0]}</td><td><span class="tg ${r[1]}">${{ real:"REAL", approx:"SHAPED BY DATA", rule:"GAME SCALE", calc:"CALCULATED" }[r[1]]}</span></td><td>${r[2]}</td></tr>`).join("")}</table></div>
+    <h3 style="font-size:1.05rem;margin-top:14px">AI acknowledgment</h3><p>${AI_NOTE}</p>
     <div class="row end"><button class="btn" data-act="${G.S ? "close" : "title"}" data-focus>Close</button></div>`);
 }
 

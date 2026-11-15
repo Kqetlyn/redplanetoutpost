@@ -18,3 +18,12 @@ Temperatures are shaped to Perseverance's MEDA weather station at Jezero, dust e
 
 ## Run it
 It is a single file: open `index.html` in any modern browser. No install needed.
+
+## AI acknowledgment
+This project was built with AI assistance. The code (HTML, CSS, JavaScript), the in-game text and the code-drawn graphics were generated with **Claude**, an AI assistant made by Anthropic. Claude was also used to look up and cite the NASA data and to run automated balance tests of each level.
+
+Our team came up with the idea, chose the features, levels and trade-offs, played and tested every version, and directed each change.
+
+- The page's metadata says so too (`<meta name="ai-generated">`, `<meta name="ai-disclosure">`, `<meta name="generator">`), and so does the comment at the top of `index.html`.
+- The game shows a visible "AI-generated with Claude" label on screen, and an AI acknowledgment on the title screen and the sources page.
+- No NASA logos, flags, mission patches or other NASA branding are used.
